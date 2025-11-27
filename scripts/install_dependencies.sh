@@ -1,9 +1,15 @@
 #!/bin/bash
-echo "Installing NGINX (if not installed)..."
+set -e
 
-sudo apt update -y
-sudo apt install nginx -y
+echo "Installing NGINX..."
+sudo apt-get update -y
+sudo apt-get install -y nginx
 
-echo "Setting permission for frontend directory..."
-sudo mkdir -p /var/www/frontend
-sudo chmod -R 755 /var/www/frontend
+echo "Copying frontend build to NGINX directory..."
+sudo rm -rf /var/www/html/*
+sudo cp -r /var/www/frontend/* /var/www/html/
+
+echo "Setting permissions..."
+sudo chown -R www-data:www-data /var/www/html
+
+echo "Installation complete."

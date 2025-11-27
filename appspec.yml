@@ -2,16 +2,14 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/frontend   # <-- your EC2 frontend directory
+    destination: /var/www/frontend
 hooks:
   BeforeInstall:
     - location: scripts/stop_server.sh
-      timeout: 60
-
+      timeout: 30
   AfterInstall:
     - location: scripts/install_dependencies.sh
-      timeout: 120
-
+      timeout: 300
   ApplicationStart:
     - location: scripts/start_server.sh
-      timeout: 120
+      timeout: 30

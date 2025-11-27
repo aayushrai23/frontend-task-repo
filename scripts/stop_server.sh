@@ -1,3 +1,4 @@
 #!/bin/bash
-echo "Stopping NGINX..."
-sudo systemctl stop nginx || true
+echo "Starting NGINX..."
+sudo systemctl restart nginx
+sudo systemctl enable nginx
