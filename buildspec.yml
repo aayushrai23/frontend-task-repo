@@ -5,15 +5,14 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Installing NPM dependencies..."
       - npm install
 
   build:
     commands:
-      - echo "Building React app..."
       - npm run build
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: build
+    - appspec.yml
+    - scripts/**/*
+    - build/**/*
